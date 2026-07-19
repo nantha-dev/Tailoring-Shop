@@ -287,8 +287,8 @@ Authentication: Include `Authorization: Bearer <token>` header (or the cookie is
 ## Default Admin Credentials (After Seeding)
 
 ```
-Email:    admin@shop.com
-Password: admin123
+Email:    admin@gmail.com
+Password: admin@123
 ```
 
 You can also register a new admin user via the API:
