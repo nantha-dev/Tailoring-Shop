@@ -5,7 +5,8 @@ import { Input } from '../../components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
 import { Pagination } from '../../components/ui/pagination';
 import { Badge } from '../../components/ui/badge';
-import { Search } from 'lucide-react';
+import { Button } from '../../components/ui/button';          // 👈 ADD THIS
+import { Search, Plus } from 'lucide-react';                 // 👈 Plus icon added
 import { useDebounce } from '../../hooks/useDebounce';
 import { formatDate } from '../../utils/formatDate';
 
@@ -25,13 +26,28 @@ export default function InvoiceList() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Invoices</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Invoices</h1>
+        <Button asChild>
+          <Link to="/invoices/new">
+            <Plus className="h-4 w-4 mr-2" /> New Invoice
+          </Link>
+        </Button>
+      </div>
       <div className="flex items-center gap-2 max-w-sm">
-        <Search className="h-4 w-4" /><Input placeholder="Search invoice..." value={search} onChange={e => setSearch(e.target.value)} />
+        <Search className="h-4 w-4" />
+        <Input placeholder="Search invoice..." value={search} onChange={e => setSearch(e.target.value)} />
       </div>
       <Table>
         <TableHeader>
-          <TableRow><TableHead>Invoice</TableHead><TableHead>Customer</TableHead><TableHead>Total</TableHead><TableHead>Status</TableHead><TableHead>Date</TableHead><TableHead>Action</TableHead></TableRow>
+          <TableRow>
+            <TableHead>Invoice</TableHead>
+            <TableHead>Customer</TableHead>
+            <TableHead>Total</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Action</TableHead>
+          </TableRow>
         </TableHeader>
         <TableBody>
           {invoices.map(inv => (
@@ -39,9 +55,17 @@ export default function InvoiceList() {
               <TableCell>{inv.invoiceNumber}</TableCell>
               <TableCell>{inv.customer?.name}</TableCell>
               <TableCell>₹{inv.grandTotal}</TableCell>
-              <TableCell><Badge variant={inv.paymentStatus === 'paid' ? 'default' : 'secondary'}>{inv.paymentStatus}</Badge></TableCell>
+              <TableCell>
+                <Badge variant={inv.paymentStatus === 'paid' ? 'default' : 'secondary'}>
+                  {inv.paymentStatus}
+                </Badge>
+              </TableCell>
               <TableCell>{formatDate(inv.createdAt)}</TableCell>
-              <TableCell><Link to={`/invoices/${inv._id}`} className="text-primary">View</Link></TableCell>
+              <TableCell>
+                <Link to={`/invoices/${inv._id}`} className="text-primary hover:underline">
+                  View
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

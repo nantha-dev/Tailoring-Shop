@@ -15,6 +15,8 @@ import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import MeasurementDetails from './pages/Measurements/MeasurementDetails';
+import CreateInvoice from './pages/Invoices/CreateInvoice';
 
 export default function App() {
   return (
@@ -30,10 +32,12 @@ export default function App() {
           <Route path="orders/new" element={<CreateOrder />} />
           <Route path="orders/:id" element={<OrderDetails />} />
           <Route path="invoices" element={<InvoiceList />} />
+          <Route path="invoices/new" element={<CreateInvoice />} />
           <Route path="invoices/:id" element={<InvoiceDetails />} />
           <Route path="reports" element={<ProtectedRoute adminOnly><Reports /></ProtectedRoute>} />
           <Route path="settings" element={<ProtectedRoute adminOnly><Settings /></ProtectedRoute>} />
           <Route path="profile" element={<Profile />} />
+          <Route path="measurements/:id" element={<MeasurementDetails />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

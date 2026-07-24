@@ -9,11 +9,11 @@ const SheetClose = SheetPrimitive.Close;
 
 const SheetContent = React.forwardRef(({ side = 'right', className, children, ...props }, ref) => (
   <SheetPrimitive.Portal>
-    <SheetPrimitive.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out" />
+    <SheetPrimitive.Overlay className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out" />
     <SheetPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
+        'fixed z-50 gap-4 bg-white border-gray-200 p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
         side === 'left' ? 'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm' : '',
         side === 'right' ? 'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm' : '',
         className
@@ -32,6 +32,7 @@ SheetContent.displayName = 'SheetContent';
 const SheetHeader = ({ className, ...props }) => (
   <div className={cn('flex flex-col space-y-2 text-center sm:text-left', className)} {...props} />
 );
+
 const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title ref={ref} className={cn('text-lg font-semibold', className)} {...props} />
 ));

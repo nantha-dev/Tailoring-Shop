@@ -34,8 +34,8 @@ async function seed() {
     // ----- Users -----
     const admin = await User.create({
       name: 'Nantha Kumar',
-      email: 'admin@gmail.com',
-      password: 'admin@123',
+      email: 'nantha1234789@gmail.com',
+      password: '123456',
       role: 'admin',
       phone: '9786739239',
       isActive: true,
@@ -44,8 +44,8 @@ async function seed() {
 
     const tailor1 = await User.create({
       name: 'Ramesh Tailor',
-      email: 'ramesh@shop.com',
-      password: 'staff123',
+      email: 'kumar@gmail.com',
+      password: '123456',
       role: 'staff',
       phone: '9988776655',
       isActive: true,
@@ -54,7 +54,7 @@ async function seed() {
     const tailor2 = await User.create({
       name: 'Suresh Master',
       email: 'suresh@shop.com',
-      password: 'staff123',
+      password: '123456',
       role: 'staff',
       phone: '9876543211',
       isActive: true,
